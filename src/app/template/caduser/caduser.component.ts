@@ -18,7 +18,7 @@ export class CaduserComponent implements OnInit {
   faMinusSquare = faMinusSquare
   alerts: AlertInterface[] = []
 
-   nome:string = 'Mardonis'
+   nome:string = ''
    sobrenome:string = '' 
    email:string = '' 
    password:string = '' 

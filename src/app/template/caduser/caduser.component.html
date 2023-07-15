@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
     
-
       <form #f="ngForm" (ngSubmit)="OnSubmit(f)">
         <h1 class="mt-3">Novo Usuário</h1>
         <div *ngFor="let item of alerts">
@@ -52,29 +51,23 @@
      
       </form>
 
-      <div class="tableLista">
+     
         <table>
             <thead>
                 <th>Nome</th>
-                <th>Status</th>
-                <th>Valor</th>
-                <th>Local</th>
+                <th>E-mail</th>
                 <th>Action</th>
             </thead>
             <tbody>
-                
                 <tr>
                     <td>Mardonis</td>
-                    <td>Pendente</td>
-                    <td>Pago</td>
-                    <td></td>
-                    <td></td>
+                    <td>Email</td>
                     <td>
                         <a routerLink="/edit/{1}" class="text-success">
-                            
+                           editar 
                         </a>
                         <a class="text-danger">
-                            
+                           excluir 
                         </a>
 
                     </td>
@@ -82,5 +75,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    
 </div>
