@@ -50,9 +50,7 @@ export class CaduserComponent implements OnInit {
       this.userService.Caduser(user)
       .subscribe(
          async (res:any) => {
-           const data = await this.userService.getAllUsers();
-            this.listusers = data
-            this.clearFormInputs();
+           window.location.href= '/'
         },
         err => {
           for (let index = 0; index < err.error.list.length; index++) {
