@@ -12,6 +12,8 @@ export class Userservice {
     constructor(private http:HttpClient){
         
     }
+
+    
     /*novo user*/
     Caduser(user:any): Observable<User>{
       return  this.http.post<User>(`${baseUrl}/users`, user)

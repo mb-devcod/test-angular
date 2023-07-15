@@ -10,7 +10,7 @@ import { Userservice } from 'src/app/services/User.service';
 })
 
 export class ListUserComponent implements OnInit{
-     list: User[] = []
+     listusers: User[] = []
     constructor( private userService: Userservice) {}
 
       ngOnInit(): void{
@@ -21,7 +21,7 @@ export class ListUserComponent implements OnInit{
     async listUsers():Promise<User[]>{
         try {
             const data = await this.userService.getAllUsers();
-            this.list = data;
+            this.listusers = data;
             return data
         } catch (error:any) {
             return error;

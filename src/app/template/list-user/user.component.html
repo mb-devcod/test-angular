@@ -1,3 +1,4 @@
+
 <table class="table">
     <thead class="thead-dark">
         <th>Nome</th>
@@ -5,16 +6,16 @@
         <th>Action</th>
     </thead>
     <tbody>
-        <tr>
-            <td>Mardonis</td>
-            <td>mardonis.bezerra@gmail.com</td>
+        <tr *ngFor="let item of listusers">
+            <td> {{ item.nome }} </td>
+            <td> {{ item.email }} </td>
             <td>
-                <a routerLink="/edit/{1}" class="text-success">
-                   editar 
-                </a>
-                <a class="text-danger">
-                   excluir 
-                </a>
+                <button class="edit">
+                    <a routerLink="/edit/{item.id}">
+                       Editar 
+                    </a>
+                </button>
+                <button onclick="deleteUser(item.id)" class="delete">Delete</button>
             </td>
         </tr>
     </tbody>

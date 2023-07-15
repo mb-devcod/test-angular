@@ -36,24 +36,16 @@ export class CaduserComponent implements OnInit {
     const email = f.value.email
     const password = f.value.password
     const reset = f.value.reset
-    const typeuser = 'user'
 
-    let user = new User(nome, sobrenome, email, password,typeuser);
+    let user = new User(nome, sobrenome, email, password);
     if(reset != password){
       this.alerts = this.alertService.alertCardUser('A senha deve ser igual')
     }else{
       this.userService.Caduser(user)
       .subscribe(
         (res:any) => {
-          if(res.sms.errors){
-            for (let index = 0; index < res.sms.errors.length; index++) {
-              const element = res.sms.errors[index];
-              this.alerts = this.alertService.alertCardUser(element.message)
-            }
-          }else{
-            this.alerts = this.alertService.alertcardUserSucesso(res.sms)
-            this.userService.getAllUsers()
-          }
+            this.clearFormInputs();
+            this.userService.getAllUsers();
         },
         err => {
           for (let index = 0; index < err.error.list.length; index++) {
@@ -72,6 +64,14 @@ export class CaduserComponent implements OnInit {
   close(alert:AlertInterface){
     this.alerts = []
     this.alertService.closeAlert(alert)
+  }
+
+  clearFormInputs(){
+    this.nome = ''
+    this.sobrenome = '' 
+    this.email = '' 
+    this.password = '' 
+    this.reset = '' 
   }
 
 }
