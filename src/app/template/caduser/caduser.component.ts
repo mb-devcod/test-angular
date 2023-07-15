@@ -5,6 +5,7 @@ import { AlertInterface } from 'src/app/models/AlertInterface';
 import { AlertService } from 'src/app/services/Alert.service';
 import { User } from '../../models/User';
 import { Userservice } from '../../services/User.service';
+import { ListUserComponent } from '../list-user/user.component';
 
 @Component({
   selector: 'app-caduser',
@@ -23,8 +24,13 @@ export class CaduserComponent implements OnInit {
    email:string = '' 
    password:string = '' 
    reset:string = '' 
+   listusers: User[] = []
 
-  constructor( private userService: Userservice ,private alertService:AlertService) {}
+  constructor( 
+    private userService: Userservice ,
+    private alertService:AlertService,
+  
+    ) {}
 
  async ngOnInit(): Promise<any> {
 
@@ -43,18 +49,17 @@ export class CaduserComponent implements OnInit {
     }else{
       this.userService.Caduser(user)
       .subscribe(
-        (res:any) => {
+         async (res:any) => {
+           const data = await this.userService.getAllUsers();
+            this.listusers = data
             this.clearFormInputs();
-            this.userService.getAllUsers();
         },
         err => {
           for (let index = 0; index < err.error.list.length; index++) {
             const element = err.error.list[index];
            this.alerts = this.alertService.alertCardUser(element.msg)
           }
-          
         }
-
       )
     }
     

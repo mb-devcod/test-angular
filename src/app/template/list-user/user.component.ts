@@ -10,7 +10,7 @@ import { Userservice } from 'src/app/services/User.service';
 })
 
 export class ListUserComponent implements OnInit{
-     listusers: User[] = []
+    listusers: User[] = []
     constructor( private userService: Userservice) {}
 
       ngOnInit(): void{
@@ -27,6 +27,11 @@ export class ListUserComponent implements OnInit{
             return error;
         }
         
+     }
+
+      deleteUser(id:any){
+        this.userService.deleteUser(id).subscribe()
+        this.listUsers()
      }
 
 }
