@@ -26,7 +26,8 @@ export class CaduserComponent implements OnInit {
 
   constructor( private userService: Userservice ,private alertService:AlertService) {}
 
-  ngOnInit(): void {
+ async ngOnInit(): Promise<any> {
+
   }
 
   OnSubmit(f: NgForm) {
@@ -45,22 +46,18 @@ export class CaduserComponent implements OnInit {
       .subscribe(
         (res:any) => {
           if(res.sms.errors){
-            console.log(res.sms.errors)
             for (let index = 0; index < res.sms.errors.length; index++) {
               const element = res.sms.errors[index];
               this.alerts = this.alertService.alertCardUser(element.message)
             }
           }else{
-            //limpar o formulário aqui
-            console.log(res.sms)
             this.alerts = this.alertService.alertcardUserSucesso(res.sms)
+            this.userService.getAllUsers()
           }
         },
         err => {
-           console.log(err.error.list)
           for (let index = 0; index < err.error.list.length; index++) {
             const element = err.error.list[index];
-            console.log(element)
            this.alerts = this.alertService.alertCardUser(element.msg)
           }
           

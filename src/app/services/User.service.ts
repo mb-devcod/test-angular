@@ -5,6 +5,7 @@ import { User } from '../models/User';
 import baseUrl from './../baseURl/baseUrl'
 
 
+
 @Injectable()
 export class Userservice {
     
@@ -13,6 +14,11 @@ export class Userservice {
     }
     /*novo user*/
     Caduser(user:any): Observable<User>{
-      return  this.http.post<User>(`${baseUrl}new`, user)
+      return  this.http.post<User>(`${baseUrl}/users`, user)
+    }
+
+  async  getAllUsers(): Promise<User[]>{
+      const data  = await fetch(`${baseUrl}/users`);
+      return await data.json()
     }
 }

@@ -3,7 +3,6 @@ export class User {
     sobrenome:string
     email: string
     password: string
-    typeuser:string
     constructor(
         nome:string , sobrenome:string ,email: string, password: string ,typeuser:string) 
     {
@@ -11,6 +10,5 @@ export class User {
         this.sobrenome = sobrenome;
         this.email = email;
         this.password = password;
-        this.typeuser = typeuser;
     }
 }
