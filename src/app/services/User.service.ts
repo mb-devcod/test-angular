@@ -21,8 +21,16 @@ export class Userservice {
       const data  = await fetch(`${baseUrl}/users`);
       return await data.json()
     }
+
+
+  async  getAllUser(id:any): Promise<User[]>{
+    const data  = await fetch(`${baseUrl}/users/{id}`);
+    return await data.json()
+  }
   
     deleteUser(id:number): Observable<User>{
      return this.http.delete<User>(`${baseUrl}/users/${id}`)
     }
+
+    
 }

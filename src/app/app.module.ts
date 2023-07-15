@@ -16,9 +16,11 @@ import {SidebarDirective} from './sidebar.directive';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ListUserComponent } from './template/list-user/user.component';
+import { EditUserComponent } from './template/list-user/edit/edit.component';
 
 @NgModule({
   declarations: [
+    EditUserComponent,
     ListUserComponent,
     AppComponent,
     NavbarComponent,
