@@ -10,7 +10,9 @@ import { Userservice } from "src/app/services/User.service";
 })
 
 export class EditUserComponent implements OnInit{
-    listuser : User[] = []
+    id: any = 0;
+    listuser : any[] = []
+
     constructor(private route: ActivatedRoute,
         private userService: Userservice){}
     ngOnInit(): void {
@@ -18,13 +20,24 @@ export class EditUserComponent implements OnInit{
     }
 
    async getUserId():Promise<User[]>{
-        const id = this.route.snapshot.paramMap.get('id');
+        let id = this.route.snapshot.paramMap.get('id');
         const data = await this.userService.getAllUser(id)
-        this.listuser = data
+        this.listuser = [data]
         return data
     }
 
     OnSubmit(f:any){
-        
+    const nome = f.value.nome
+    const sobrenome = f.value.sobrenome
+    const email = f.value.email
+    const password = f.value.password
+    const reset = f.value.reset
+
+    let user = new User(nome, sobrenome, email, password);
+    let id = this.route.snapshot.paramMap.get('id') || 0;
+    this.userService.updateUser(id, user).subscribe((res) => {
+        window.location.href = '/'
+    })
+    
     }
 }
