@@ -15,9 +15,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {SidebarDirective} from './sidebar.directive';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ListUserComponent } from './template/list-user/user.component';
 
 @NgModule({
   declarations: [
+    ListUserComponent,
     AppComponent,
     NavbarComponent,
     CaduserComponent,
