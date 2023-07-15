@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faUserLock, faKey, faUserCircle, faMinusSquare } from '@fortawesome/free-solid-svg-icons'
 import { AlertInterface } from 'src/app/models/AlertInterface';
+import { AlertService } from 'src/app/services/Alert.service';
+import { User } from '../../models/User';
 import { Userservice } from '../../services/User.service';
 
 @Component({
@@ -22,7 +24,7 @@ export class CaduserComponent implements OnInit {
    password:string = '' 
    reset:string = '' 
 
-  constructor( private userService: Userservice) {}
+  constructor( private userService: Userservice ,private alertService:AlertService) {}
 
   ngOnInit(): void {
   }
@@ -35,10 +37,45 @@ export class CaduserComponent implements OnInit {
     const reset = f.value.reset
     const typeuser = 'user'
 
+    let user = new User(nome, sobrenome, email, password,typeuser);
+    if(reset != password){
+      this.alerts = this.alertService.alertCardUser('A senha deve ser igual')
+    }else{
+      this.userService.Caduser(user)
+      .subscribe(
+        (res:any) => {
+          if(res.sms.errors){
+            console.log(res.sms.errors)
+            for (let index = 0; index < res.sms.errors.length; index++) {
+              const element = res.sms.errors[index];
+              this.alerts = this.alertService.alertCardUser(element.message)
+            }
+          }else{
+            //limpar o formulário aqui
+            console.log(res.sms)
+            this.alerts = this.alertService.alertcardUserSucesso(res.sms)
+          }
+        },
+        err => {
+           console.log(err.error.list)
+          for (let index = 0; index < err.error.list.length; index++) {
+            const element = err.error.list[index];
+            console.log(element)
+           this.alerts = this.alertService.alertCardUser(element.msg)
+          }
+          
+        }
+
+      )
+    }
+    
   
   }
 
-
+  close(alert:AlertInterface){
+    this.alerts = []
+    this.alertService.closeAlert(alert)
+  }
 
 }
 

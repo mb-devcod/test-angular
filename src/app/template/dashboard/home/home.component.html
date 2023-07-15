@@ -1,0 +1,36 @@
+<div id="wrapper" [ngClass]="ref.click === true? 'toggled' :''">
+  <div class="overlay" [ngStyle]="{disply:ref.click === true? 'block' :'none'}"></div>
+
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper">
+      <!--nav-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-nav border-bottom">
+
+        <button appSidebar #ref="appSidebar" type="button" class="hamburger is-closed" data-toggle="offcanvas">
+          <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+          <span class="hamb-bottom"></span>
+        </button>
+       
+        <a></a>
+        <!--navbar-toogle-->
+        <app-navbartoogle></app-navbartoogle>
+        <!--navbar-collapse-->
+       
+        <div class="collapse navbar-collapse  justify-content-end" id="navbarSupportedContent">
+          <app-collapse></app-collapse>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Dashboard</h1>
+        <app-cards></app-cards>
+        <!--charts-->
+      
+
+      </div>
+    </div>
+  </div>
+</div>
