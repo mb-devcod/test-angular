@@ -20,7 +20,25 @@
     "@angular/router": "^16.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.13.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@juggle/resize-observer": "^3.3.1",
+    "@ng-bootstrap/ng-bootstrap": "^9.1.1",
+    "@nguniversal/express-engine": "^11.2.1",
+    "bootstrap": "^4.6.0",
+    "echarts": "^5.1.2",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "localstorage-polyfill": "^1.0.1",
+    "mock-browser": "^0.92.14",
+    "moment": "^2.29.1",
+    "ngx-echarts": "^7.0.1",
+    "ngx-pagination": "^5.1.1",
+    "path": "^0.12.7",
+    "popper.js": "^1.16.1",
+    "rxjs-compat": "^6.6.7"
+   
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.4",
